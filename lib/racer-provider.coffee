@@ -42,6 +42,7 @@ class RacerProvider
         prefix = '' if prefix.slice(-1).match(/(\)|\.|:|;)/g)
         suggestion =
           text: word.word
+          snippet: word.snippet
           replacementPrefix: prefix
           rightLabelHTML: "<em>(#{word.file})</em>"
           leftLabel: word.type
