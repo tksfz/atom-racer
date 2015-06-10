@@ -88,8 +88,8 @@ class RacerClient
     rcrgex = /MATCH (\w*)\,\d*\,\d*\,([^\,]*)\,(\w*)\,(.*)\n/mg
     while match = rcrgex.exec(line)
       if match?.length > 2
-        snippet = match[4].substring(match[4].indexOf(' ') + 1)
-        candidate = {word: match[1], file: "this", type: match[3], snippet: snippet}
+        candidate = {word: match[1], file: "this", type: match[3]}
+        candidate.snippet = match[4].substring(match[4].indexOf(' ') + 1) if match[3] != "Module"
         candidate.file = path.basename(match[2]) if path.extname(match[2]) != ".racertmp"
         matches.push(candidate)
     return matches
