@@ -85,7 +85,7 @@ class RacerClient
 
   parse_single: (line) ->
     matches = []
-    rcrgex = /MATCH (\w*)\,\d*\,\d*\,([^\,]*)\,(\w*)\,(.*)\n/mg
+    rcrgex = /MATCH (\w*)\,\d*\,\d*\,([^\,]*)\,(\w*)\,(?:(?:fn|pub\s+fn)\s+)?(.*)\n/mg
     while match = rcrgex.exec(line)
       if match?.length > 2
         candidate = {word: match[1], file: "this", type: match[3]}
